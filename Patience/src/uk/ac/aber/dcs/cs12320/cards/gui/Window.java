@@ -15,14 +15,18 @@ import javax.swing.JPanel;
  * @version 1.1 (5th March 2015)
  *
  */
-public class TheFrame extends JFrame {
+public class Window extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ThePanel canvas;
 
 	/**
 	 * The constructor creates a Frame ready to display the cards
 	 */
-	public TheFrame() {
+	public Window() {
 
 		// Calls the constructor in the JFrame superclass passing up the name to 
 		// display in the title
@@ -68,6 +72,10 @@ public class TheFrame extends JFrame {
 	 * can draw on it
 	 */
 	private class ThePanel extends JPanel {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		ArrayList<String> cards = new ArrayList<String>();
 		private Image image;
 		private boolean done;
