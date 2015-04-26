@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JViewport;
 /**
  * Represents a window on which to draw the cards
  * @author Lynda Thomas (and Chris Loftus)
@@ -36,17 +37,8 @@ public class Window extends JFrame {
 		// display in the title
 		super("Becky's Patience");
 		
-		
-		
-		
-		 JScrollBar hbar = new JScrollBar(JScrollBar.HORIZONTAL, 30, 20, 0, 300);
-		 hbar.setUnitIncrement(2);
-		    hbar.setBlockIncrement(1);
-		    
-		    hbar.addAdjustmentListener(new MyAdjustmentListener());
-		    
-		 
-		 
+
+		   
 		// When you click on the close window button the window will be closed
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -57,7 +49,8 @@ public class Window extends JFrame {
 		canvas = new ThePanel();
 		setSize(700, 300);
 		this.add(canvas, BorderLayout.CENTER);
-		this.add(hbar, BorderLayout.SOUTH);
+		
+		
 		
 
 		setVisible(true); // Display the window
@@ -65,12 +58,6 @@ public class Window extends JFrame {
 	
 	
 
-	  class MyAdjustmentListener implements AdjustmentListener {
-	    public void adjustmentValueChanged(AdjustmentEvent e) {
-	      
-	      repaint();
-	    }
-	  }
 
 	/**
 	 * Displays all cards
