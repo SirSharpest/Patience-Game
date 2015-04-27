@@ -124,7 +124,7 @@ public class Window extends JFrame {
 			for (String c : cards) {
 				String file = "cards/" + c;
 				image = Toolkit.getDefaultToolkit().getImage(file);
-				g.drawImage(image, x, y, 70, 100, this);
+				g.drawImage(image, x, y, 70, 100, null);
 				x += 72;  // The x position is moved on in order to position the next card
 				          // This could be improved by having a horizontal scroll bar
 			}
@@ -132,7 +132,7 @@ public class Window extends JFrame {
 				// Draws the face-down top card of our pack of cards
 				String file = "cards/b.gif";
 				image = Toolkit.getDefaultToolkit().getImage(file);
-				g.drawImage(image, 100, 152, 70, 100, this);
+				g.drawImage(image, 100, 152, 70, 100, null);
 			}
 		}
 	} // ThePanel inner class

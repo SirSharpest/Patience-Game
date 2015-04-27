@@ -26,6 +26,11 @@ public class PatienceGame {
 		mWindow = new Window(); 
 		mCardStrings = new ArrayList<String>();
 		
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		
 		//Drop into the game loop 
 		while(mGameIsRunning){
 			

@@ -38,6 +38,77 @@ public class Card {
 		return suit.name()+"-"+value.name();
 	}
 	
+	/**
+	 * Gets file name realitive to the card 
+	 */
+	public String getImageLocation(){
+		
+		String firstPart = null; 
+		String secondPart = null; 
+		
+		switch (suit) {
+		case HEARTS:
+			//
+			break;
+		case DIAMONDS:
+			//
+			break;
+		case SPADES:
+			//
+			break;
+		case CLUBS:
+			//
+			break;
+		default:
+			break;
+		}
+		
+		switch (value) {
+		case ACE:
+			//
+			break;
+		case TWO:
+			//
+			break;
+		case THREE:
+			//
+			break;
+		case FOUR:
+			//
+			break;
+		case FIVE:
+			//
+			break;
+		case SIX:
+			//
+			break;
+		case SEVEN:
+			//
+			break;
+		case EIGHT:
+			//
+			break;
+		case NINE:
+			//
+			break;
+		case TEN:
+			//
+			break;
+		case JACK:
+			//
+			break;
+		case QUEEN:
+			//
+			break;
+		case KING:
+			//
+			break;
+		default:
+			break;
+		}
+		
+		return ""; 
+	}
 	
 	
 	
