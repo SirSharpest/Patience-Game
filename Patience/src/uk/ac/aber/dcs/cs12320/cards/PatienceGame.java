@@ -32,9 +32,9 @@ public class PatienceGame {
 			//get the user input 
 			handleInput();
 			//perform game logic 
-			handleInput();
+			performLogic();
 			//display & render the game to the screen
-			mWindow.cardDisplay(mCardStrings);
+			renderWindow(mWindow);
 			
 		}
 		
@@ -48,6 +48,23 @@ public class PatienceGame {
 		
 	}
 	
+	/**
+	 * Game logic will be handled here 
+	 * based on what is received through the @handleInput() 
+	 */
+	private static void performLogic(){
+		
+	}
+	
+	/**
+	 * Everything here will be drawn to the screen 
+	 */
+	private static void renderWindow(Window window){
+		
+		//Draw example to the window
+		window.cardDisplay(mCardStrings);
+		
+	}
 	
 	
 	public static void main(String args[]) {

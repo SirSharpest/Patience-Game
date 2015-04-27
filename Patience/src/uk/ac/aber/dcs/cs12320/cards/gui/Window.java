@@ -6,14 +6,14 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.util.ArrayList;
-import java.awt.event.AdjustmentListener;
-import java.awt.event.AdjustmentEvent;
+//import java.awt.event.AdjustmentListener;
+//import java.awt.event.AdjustmentEvent;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
+//import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JViewport;
+//import javax.swing.JScrollBar;
+//import javax.swing.JViewport;
 /**
  * Represents a window on which to draw the cards
  * @author Lynda Thomas (and Chris Loftus)
