@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs12320.cards.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -9,9 +10,12 @@ import java.util.ArrayList;
 //import java.awt.event.AdjustmentListener;
 //import java.awt.event.AdjustmentEvent;
 
+
+
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 //import javax.swing.JScrollBar;
 //import javax.swing.JViewport;
 /**
@@ -37,8 +41,6 @@ public class Window extends JFrame {
 		// display in the title
 		super("Becky's Patience");
 		
-
-		   
 		// When you click on the close window button the window will be closed
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
@@ -47,8 +49,20 @@ public class Window extends JFrame {
 
 		// This is what we will draw on (see the inner class below)
 		canvas = new ThePanel();
-		setSize(700, 300);
-		this.add(canvas, BorderLayout.CENTER);
+		
+		//TODO: make this editable to change with amount of 
+		// 		cards showing currently 
+		canvas.setPreferredSize(new Dimension(3796, 300));
+		JScrollPane scrollPane = new JScrollPane(canvas);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		
+		this.setPreferredSize(new Dimension(700, 300));
+		this.setSize(700, 300);
+		
+		
+		this.add(scrollPane);
+		
 		
 		
 		
@@ -57,7 +71,7 @@ public class Window extends JFrame {
 	}
 	
 	
-
+	
 
 	/**
 	 * Displays all cards
@@ -135,6 +149,8 @@ public class Window extends JFrame {
 				g.drawImage(image, 100, 152, 70, 100, null);
 			}
 		}
+		
+
 	} // ThePanel inner class
 
 } 

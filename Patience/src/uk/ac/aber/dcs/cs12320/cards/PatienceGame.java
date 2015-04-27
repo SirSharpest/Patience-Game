@@ -26,10 +26,61 @@ public class PatienceGame {
 		mWindow = new Window(); 
 		mCardStrings = new ArrayList<String>();
 		
+		//52 cards to test window
 		mCardStrings.add("3h.gif");
 		mCardStrings.add("tc.gif");
 		mCardStrings.add("js.gif");
 		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+		mCardStrings.add("3h.gif");
+		mCardStrings.add("tc.gif");
+		mCardStrings.add("js.gif");
+		mCardStrings.add("4d.gif");
+
+
 		
 		//Drop into the game loop 
 		while(mGameIsRunning){

@@ -43,8 +43,8 @@ public class Card {
 	 */
 	public String getImageLocation(){
 		
-		String firstPart = null; 
-		String secondPart = null; 
+		//String firstPart = null; 
+		//String secondPart = null; 
 		
 		switch (suit) {
 		case HEARTS:
