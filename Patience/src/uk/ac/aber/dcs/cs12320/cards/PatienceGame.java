@@ -62,6 +62,18 @@ public class PatienceGame {
 	 */
 	private static void handleInput(){
 		
+		//Call the menu to give player their options
+		printMenu();
+		
+		
+	}
+	
+	/**
+	 * This function will print the menu options for the 
+	 * player 
+	 */
+	private static void printMenu(){
+		
 	}
 	
 	/**
