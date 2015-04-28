@@ -16,8 +16,10 @@ public class Card {
 						SEVEN, EIGHT, NINE, TEN, JACK, 
 						QUEEN, KING;}
 	
-	final Suit suit; 
-	final Value value; 
+	final Suit mSuit; 
+	final Value mValue; 
+	
+	private boolean mIsInPlay; 
 	
 	/**
 	 * Public constructor which assigns the values 
@@ -25,9 +27,28 @@ public class Card {
 	 */
 	public Card (final Suit suit, final Value value){
 		
-		this.suit = suit; 
-		this.value = value; 
+		this.mSuit = suit; 
+		this.mValue = value; 
+		this.mIsInPlay = false; 
 		
+	}
+	
+	/**
+	 * Tells the class that the card is currently in play
+	 * and needs drawn to screen
+	 * 
+	 * @param cardStatus
+	 */
+	public void setCardInPlay(boolean cardStatus){
+		this.mIsInPlay = cardStatus;
+	}
+	
+	/**
+	 * Provides the boolean that states the status of the card 
+	 * @return mIsInPlay 
+	 */
+	public boolean isCardInPlay(){
+		return this.mIsInPlay;
 	}
 	
 	/**
@@ -35,79 +56,82 @@ public class Card {
 	 * @Override 
 	 */
 	public String toString(){
-		return suit.name()+"-"+value.name();
+		return mSuit.name()+"-"+mValue.name();
 	}
 	
 	/**
-	 * Gets file name realitive to the card 
+	 * Gets file name relative to the card 
 	 */
-	public String getImageLocation(){
+	public String getImageName(){
 		
-		//String firstPart = null; 
-		//String secondPart = null; 
+		String firstPart = null; 
+		String secondPart = null; 
 		
-		switch (suit) {
+		//case to determine the suit of the card
+		switch (mSuit) {
 		case HEARTS:
-			//
+			secondPart = "h";
 			break;
 		case DIAMONDS:
-			//
+			secondPart = "d";
 			break;
 		case SPADES:
-			//
+			secondPart = "s";
 			break;
 		case CLUBS:
-			//
+			secondPart = "c";
 			break;
 		default:
 			break;
 		}
 		
-		switch (value) {
+		//case to determine the value of the card 
+		switch (mValue) {
 		case ACE:
-			//
+			firstPart = "a";
 			break;
 		case TWO:
-			//
+			firstPart = "2";
 			break;
 		case THREE:
-			//
+			firstPart = "3";
 			break;
 		case FOUR:
-			//
+			firstPart = "4";
 			break;
 		case FIVE:
-			//
+			firstPart = "5";
 			break;
 		case SIX:
-			//
+			firstPart = "6";
 			break;
 		case SEVEN:
-			//
+			firstPart = "7";
 			break;
 		case EIGHT:
-			//
+			firstPart = "8";
 			break;
 		case NINE:
-			//
+			firstPart = "9";
 			break;
 		case TEN:
-			//
+			firstPart = "10";
 			break;
 		case JACK:
-			//
+			firstPart = "j";
 			break;
 		case QUEEN:
-			//
+			firstPart = "q";
 			break;
 		case KING:
-			//
+			firstPart = "k";
 			break;
 		default:
 			break;
 		}
 		
-		return ""; 
+		//the result of adding the parts of the file names 
+		return firstPart + secondPart; 
 	}
 	
 	

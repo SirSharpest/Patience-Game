@@ -52,13 +52,18 @@ public class Window extends JFrame {
 		
 		//TODO: make this editable to change with amount of 
 		// 		cards showing currently 
-		canvas.setPreferredSize(new Dimension(3796, 300));
-		JScrollPane scrollPane = new JScrollPane(canvas);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-		this.setPreferredSize(new Dimension(700, 300));
-		this.setSize(700, 300);
+		//This is the max size I expect it to ever be
+		canvas.setPreferredSize(new Dimension(690, 300));
+		
+		//implementing a scroll pane to the window and 
+		//attaching it to the canvas object 
+		JScrollPane scrollPane = new JScrollPane(canvas);
+		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		
+		this.setSize(700, 400);
 		
 		
 		this.add(scrollPane);
@@ -69,8 +74,14 @@ public class Window extends JFrame {
 
 		setVisible(true); // Display the window
 	}
-	
-	
+	/**
+	 * This method allows for the screen to be resized whenever 
+	 * called by a sub class with dimensions 
+	 * @param size
+	 */
+	public void setCanvasPreferredSize(Dimension size){
+		this.canvas.setPreferredSize(size);
+	}
 	
 
 	/**

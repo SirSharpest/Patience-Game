@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
@@ -11,6 +12,8 @@ public class PatienceGame {
 	private static boolean mGameIsRunning; 
 	
 	private static Window mWindow; 
+	
+	private static Deck mDeck; 
 		
 
 	
@@ -25,65 +28,21 @@ public class PatienceGame {
 		mGameIsRunning = true; 
 		mWindow = new Window(); 
 		mCardStrings = new ArrayList<String>();
+		mDeck = new Deck();
 		
-		//52 cards to test window
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-		mCardStrings.add("3h.gif");
-		mCardStrings.add("tc.gif");
-		mCardStrings.add("js.gif");
-		mCardStrings.add("4d.gif");
-
-
 		
 		//Drop into the game loop 
 		while(mGameIsRunning){
+			
+			//Consume less CPU by sleeping a slight amount 
+			//Hopefully will not affect player, unless they 
+			//have computer cat like reflexes
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				
+				e.printStackTrace();
+			}
 			
 			//get the user input 
 			handleInput();
@@ -91,6 +50,7 @@ public class PatienceGame {
 			performLogic();
 			//display & render the game to the screen
 			renderWindow(mWindow);
+
 			
 		}
 		
@@ -117,8 +77,12 @@ public class PatienceGame {
 	 */
 	private static void renderWindow(Window window){
 		
+		//Used to determine the need of the scroll bar on bottom of jFrame
+		window.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
+		
 		//Draw example to the window
 		window.cardDisplay(mCardStrings);
+	
 		
 	}
 	
