@@ -1,6 +1,7 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
 import java.awt.Dimension;
+import java.io.PrintStream;
 import java.util.ArrayList;
 
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
@@ -30,6 +31,13 @@ public class PatienceGame {
 		mCardStrings = new ArrayList<String>();
 		mDeck = new Deck();
 		
+		//Setup custom output stream
+		PrintStream printStream = new PrintStream(mWindow.getTextAreaStream());
+		System.setErr(printStream);
+		System.setOut(printStream);
+		
+		//Printing menu once initally 
+		printMenu();
 		
 		//Drop into the game loop 
 		while(mGameIsRunning){
@@ -62,8 +70,7 @@ public class PatienceGame {
 	 */
 	private static void handleInput(){
 		
-		//Call the menu to give player their options
-		printMenu();
+		
 		
 		
 	}
@@ -73,7 +80,15 @@ public class PatienceGame {
 	 * player 
 	 */
 	private static void printMenu(){
-		
+		System.out.println("Hello there");
+		System.out.println("Click the button relating to \nthe option you want to take");
+		System.out.println("---");
+		System.out.println("1. Print the pack of cards");
+		System.out.println("2. Shuffle pack");
+		System.out.println("3. Deal a card");
+		System.out.println("4. Move last pile onto previous one");
+		System.out.println("5. Move last pile over 2 previous piles");
+		System.out.println("6. ");
 	}
 	
 	/**

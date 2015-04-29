@@ -6,6 +6,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 //import java.awt.event.AdjustmentListener;
 //import java.awt.event.AdjustmentEvent;
@@ -13,6 +15,11 @@ import java.util.ArrayList;
 
 
 
+
+
+
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +41,8 @@ public class Window extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private ThePanel canvas;
 	private JTextArea textArea; 
+	private CustomStream streamTextArea;
+	
 
 	/**
 	 * The constructor creates a Frame ready to display the cards
@@ -43,6 +52,9 @@ public class Window extends JFrame {
 		// Calls the constructor in the JFrame superclass passing up the name to 
 		// display in the title
 		super("Becky's Patience");
+		
+		//Create customStream object
+		streamTextArea = new CustomStream();
 		
 		// When you click on the close window button the window will be closed
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,11 +66,31 @@ public class Window extends JFrame {
 		canvas = new ThePanel();
 		
 		//This is the max size I expect it to ever be
-		canvas.setPreferredSize(new Dimension(590, 300));
+		canvas.setPreferredSize(new Dimension(590, 348));
 		
+		//Text area information
 		textArea = new JTextArea();
-		textArea.append("Hello world");
 		textArea.setPreferredSize(new Dimension(300, 690));
+		textArea.setEditable(false);
+		
+		//Button area information
+		JPanel buttonPanel = new JPanel(); 
+		ArrayList<JButton> buttons = new ArrayList<JButton>();
+		for(int i = 1; i < 13; i ++){
+			
+			JButton tmpButton = new JButton(""+i);
+			tmpButton.setPreferredSize(new Dimension(75, 40));;
+			buttons.add(tmpButton);
+			buttonPanel.add(buttons.get(i-1));
+			
+			//buttons.get(i-1);
+			
+		}
+		
+		
+
+
+		buttonPanel.setPreferredSize(new Dimension(690, 50));
 		
 		
 		
@@ -73,10 +105,12 @@ public class Window extends JFrame {
 		scrollText.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
-		this.setSize(900, 400);
+		this.setSize(900, 440);
 	
 		this.add(scrollText, BorderLayout.EAST);
+		this.add(buttonPanel, BorderLayout.SOUTH);
 		this.add(scrollPane, BorderLayout.WEST);
+		
 		
 		this.setResizable(false);
 		
@@ -91,6 +125,10 @@ public class Window extends JFrame {
 	 */
 	public void setCanvasPreferredSize(Dimension size){
 		this.canvas.setPreferredSize(size);
+	}
+	
+	public OutputStream getTextAreaStream(){
+		return this.streamTextArea;
 	}
 	
 
@@ -173,5 +211,23 @@ public class Window extends JFrame {
 		
 
 	} // ThePanel inner class
+	
+	private class CustomStream extends OutputStream{
+ 
+		public  CustomStream() {
+			// TODO Auto-generated constructor stub
+		}
+		
+	    @Override
+	    public void write(int b) throws IOException {
+	        // redirects data to the text area
+	        textArea.append(String.valueOf((char)b));
+	        // scrolls the text area to the end of data
+	        textArea.setCaretPosition(textArea.getDocument().getLength());
+	    }
+	    
+	   
+		
+	}
 
 } 
