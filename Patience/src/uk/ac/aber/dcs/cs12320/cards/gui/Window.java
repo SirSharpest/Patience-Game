@@ -12,10 +12,12 @@ import java.util.ArrayList;
 
 
 
+
 import javax.swing.JFrame;
 //import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 //import javax.swing.JScrollBar;
 //import javax.swing.JViewport;
 /**
@@ -31,6 +33,7 @@ public class Window extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 	private ThePanel canvas;
+	private JTextArea textArea; 
 
 	/**
 	 * The constructor creates a Frame ready to display the cards
@@ -50,25 +53,32 @@ public class Window extends JFrame {
 		// This is what we will draw on (see the inner class below)
 		canvas = new ThePanel();
 		
-		//TODO: make this editable to change with amount of 
-		// 		cards showing currently 
-		
 		//This is the max size I expect it to ever be
-		canvas.setPreferredSize(new Dimension(690, 300));
+		canvas.setPreferredSize(new Dimension(590, 300));
 		
-		//implementing a scroll pane to the window and 
+		textArea = new JTextArea();
+		textArea.append("Hello world");
+		textArea.setPreferredSize(new Dimension(300, 690));
+		
+		
+		
+		//implementing a scroll pane to the drawing section and 
 		//attaching it to the canvas object 
 		JScrollPane scrollPane = new JScrollPane(canvas);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
+		//Scroll pane for text section
+		JScrollPane scrollText = new JScrollPane(textArea);
+		scrollText.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		scrollText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
-		this.setSize(700, 400);
+		this.setSize(900, 400);
+	
+		this.add(scrollText, BorderLayout.EAST);
+		this.add(scrollPane, BorderLayout.WEST);
 		
-		
-		this.add(scrollPane);
-		
-		
+		this.setResizable(false);
 		
 		
 
