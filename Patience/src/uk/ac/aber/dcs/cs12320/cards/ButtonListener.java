@@ -34,7 +34,8 @@ public class ButtonListener implements ActionListener{
 		
 		//button 2 handle 
 		if(e.getSource() == buttons.get(1)){
-			System.out.println("2");
+			System.out.println("Deck Shuffled");
+			PatienceGame.shuffleDeck();
 		}
 		
 		//button 3 handle 

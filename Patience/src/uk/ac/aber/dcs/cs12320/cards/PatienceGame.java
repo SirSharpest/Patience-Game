@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 
 
+import java.util.Collections;
+
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
@@ -42,8 +44,12 @@ public class PatienceGame {
 		//Printing menu once initially 
 		printMenu();
 		
+		updateCards();
+		
 		//Drop into the game loop 
 		while(mGameIsRunning){
+			
+
 			
 			//Consume less CPU by sleeping a slight amount 
 			//Hopefully will not affect player, unless they 
@@ -55,27 +61,15 @@ public class PatienceGame {
 				e.printStackTrace();
 			}
 			
-			//get the user input 
-			handleInput();
-			//perform game logic 
-			performLogic();
+			
 			//display & render the game to the screen
-			renderWindow(mWindow);
+			renderWindow();
 
 			
 		}
 		
 	}
 	
-	/**
-	 * This function will get the user's input from the keyboard
-	 * using the scanner class 
-	 */
-	private static void handleInput(){
-		
-		
-		
-	}
 	
 	/**
 	 * This function will print the menu options for the 
@@ -102,26 +96,30 @@ public class PatienceGame {
 	 * Game logic will be handled here 
 	 * based on what is received through the @handleInput() 
 	 */
-	private static void performLogic(){
+	private static void updateCards(){
 		mCardStrings = mDeck.printActiveCards();
 	}
 	
 	/**
 	 * Everything here will be drawn to the screen 
 	 */
-	private static void renderWindow(Window window){
+	private static void renderWindow(){
 		
+		//update what to draw
+		//updateCards();
 		//Draw to the window
-		window.cardDisplay(mCardStrings);
+		mWindow.cardDisplay(mCardStrings);
 		
 		//Used to determine the need of the scroll bar on bottom of jFrame
-		window.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
-		
-
-	
+		mWindow.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
 		
 	}
 	
+	public static void shuffleDeck(){
+		Collections.shuffle(mCardStrings);
+		Collections.shuffle(mCardStrings);
+	
+	}
 	
 	public static void main(String args[]) {
 		
