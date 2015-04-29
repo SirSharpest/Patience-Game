@@ -9,31 +9,21 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
-//import java.awt.event.AdjustmentListener;
-//import java.awt.event.AdjustmentEvent;
-
-
-
-
-
-
-
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-//import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-//import javax.swing.JScrollBar;
-//import javax.swing.JViewport;
+
+import uk.ac.aber.dcs.cs12320.cards.ButtonListener;
+
 /**
  * Represents a window on which to draw the cards
  * @author Lynda Thomas (and Chris Loftus)
  * @version 1.1 (5th March 2015)
  *
  */
-public class Window extends JFrame {
+public class Window extends JFrame{
 
 	/**
 	 * 
@@ -42,16 +32,21 @@ public class Window extends JFrame {
 	private ThePanel canvas;
 	private JTextArea textArea; 
 	private CustomStream streamTextArea;
-	
+
+	private ArrayList<JButton> buttons;
+	private ButtonListener listener; 
 
 	/**
 	 * The constructor creates a Frame ready to display the cards
 	 */
 	public Window() {
 
+		
+		
 		// Calls the constructor in the JFrame superclass passing up the name to 
 		// display in the title
 		super("Becky's Patience");
+		
 		
 		//Create customStream object
 		streamTextArea = new CustomStream();
@@ -66,52 +61,51 @@ public class Window extends JFrame {
 		canvas = new ThePanel();
 		
 		//This is the max size I expect it to ever be
-		canvas.setPreferredSize(new Dimension(590, 348));
+		canvas.setPreferredSize(new Dimension(580, 860));
 		
 		//Text area information
 		textArea = new JTextArea();
-		textArea.setPreferredSize(new Dimension(300, 690));
+		textArea.setPreferredSize(new Dimension(310, 860));
 		textArea.setEditable(false);
 		
 		//Button area information
 		JPanel buttonPanel = new JPanel(); 
-		ArrayList<JButton> buttons = new ArrayList<JButton>();
+		buttons = new ArrayList<JButton>();
 		for(int i = 1; i < 13; i ++){
-			
 			JButton tmpButton = new JButton(""+i);
 			tmpButton.setPreferredSize(new Dimension(75, 40));;
 			buttons.add(tmpButton);
 			buttonPanel.add(buttons.get(i-1));
-			
-			//buttons.get(i-1);
-			
 		}
-		
-		
-
-
+		//setting up listener for buttons
+		listener = new ButtonListener();
+		listener.setButtonsToListen(buttons);
+		for(int i = 0; i < 12; i++){
+			buttons.get(i).addActionListener(listener);
+		}
 		buttonPanel.setPreferredSize(new Dimension(690, 50));
-		
-		
 		
 		//implementing a scroll pane to the drawing section and 
 		//attaching it to the canvas object 
 		JScrollPane scrollPane = new JScrollPane(canvas);
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
 		//Scroll pane for text section
 		JScrollPane scrollText = new JScrollPane(textArea);
 		scrollText.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
+		//screen size
 		this.setSize(900, 440);
 	
+		//adding panels to the screen 
 		this.add(scrollText, BorderLayout.EAST);
 		this.add(buttonPanel, BorderLayout.SOUTH);
 		this.add(scrollPane, BorderLayout.WEST);
 		
 		
+		//DO NOT EVER RESIZE IT WILL MESS UP 
+		//MORE THAN I CARE TO ADMIT OR TRY TO FIX :)
 		this.setResizable(false);
 		
 		
@@ -127,11 +121,20 @@ public class Window extends JFrame {
 		this.canvas.setPreferredSize(size);
 	}
 	
+	/**
+	 * Custom outputstream for text to go to
+	 * @return streamTextArea - where to push the text to
+	 */
 	public OutputStream getTextAreaStream(){
 		return this.streamTextArea;
 	}
 	
-
+	/**
+	 * @return the buttons
+	 */
+	public ArrayList<JButton> getButtons() {
+		return buttons;
+	}
 	/**
 	 * Displays all cards
 	 * 
@@ -200,6 +203,7 @@ public class Window extends JFrame {
 				g.drawImage(image, x, y, 70, 100, null);
 				x += 72;  // The x position is moved on in order to position the next card
 				          // This could be improved by having a horizontal scroll bar
+
 			}
 			if (!done) {
 				// Draws the face-down top card of our pack of cards
@@ -229,5 +233,6 @@ public class Window extends JFrame {
 	   
 		
 	}
+
 
 } 

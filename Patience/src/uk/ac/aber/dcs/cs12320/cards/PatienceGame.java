@@ -4,6 +4,8 @@ import java.awt.Dimension;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+
+
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
@@ -15,14 +17,15 @@ public class PatienceGame {
 	private static Window mWindow; 
 	
 	private static Deck mDeck; 
-		
-
+	
 	
 	/**
 	 * This function calls everything needed for 
 	 * the game to run
 	 */
 	private static void startGame() {
+		
+		
 		
 		//perform the set up of a game here
 		//create a deck of cards and shuffle them 
@@ -36,7 +39,7 @@ public class PatienceGame {
 		System.setErr(printStream);
 		System.setOut(printStream);
 		
-		//Printing menu once initally 
+		//Printing menu once initially 
 		printMenu();
 		
 		//Drop into the game loop 
@@ -72,23 +75,27 @@ public class PatienceGame {
 		
 		
 		
-		
 	}
 	
 	/**
 	 * This function will print the menu options for the 
 	 * player 
 	 */
-	private static void printMenu(){
+	public static void printMenu(){
 		System.out.println("Hello there");
 		System.out.println("Click the button relating to \nthe option you want to take");
 		System.out.println("---");
-		System.out.println("1. Print the pack of cards");
-		System.out.println("2. Shuffle pack");
-		System.out.println("3. Deal a card");
-		System.out.println("4. Move last pile onto previous one");
-		System.out.println("5. Move last pile over 2 previous piles");
-		System.out.println("6. ");
+		System.out.println("1.  Print the pack of cards");
+		System.out.println("2.  Shuffle pack");
+		System.out.println("3.  Deal a card");
+		System.out.println("4.  Move last pile onto previous one");
+		System.out.println("5.  Move last pile over 2 previous piles");
+		System.out.println("6.  Almalgamate piles");
+		System.out.println("7.  Play for me once");
+		System.out.println("8.  Play for me many times");
+		System.out.println("9.  Display lowest pack sizes");
+		System.out.println("10. Control text display");
+		System.out.println("11. Quit");
 	}
 	
 	/**
@@ -104,11 +111,13 @@ public class PatienceGame {
 	 */
 	private static void renderWindow(Window window){
 		
+		//Draw to the window
+		window.cardDisplay(mCardStrings);
+		
 		//Used to determine the need of the scroll bar on bottom of jFrame
 		window.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
 		
-		//Draw example to the window
-		window.cardDisplay(mCardStrings);
+
 	
 		
 	}
@@ -119,5 +128,6 @@ public class PatienceGame {
 		startGame(); 
 
 	}
-	
+
 }
+
