@@ -147,7 +147,7 @@ public class Window extends JFrame {
 			int y = 50;
 			// Loop through all the cards get each image in turn
 			for (String c : cards) {
-				String file = "cards/" + c;
+				String file = "cards/" + c + ".gif";
 				image = Toolkit.getDefaultToolkit().getImage(file);
 				g.drawImage(image, x, y, 70, 100, null);
 				x += 72;  // The x position is moved on in order to position the next card

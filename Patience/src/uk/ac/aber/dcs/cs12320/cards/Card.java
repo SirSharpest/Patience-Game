@@ -9,7 +9,7 @@ package uk.ac.aber.dcs.cs12320.cards;
  */
 
 
-public class Card {
+public class Card implements Comparable<Card> {
 
 	public enum Suit { HEARTS, CLUBS, DIAMONDS, SPADES;}
 	public enum Value { ACE, TWO, THREE, FOUR, FIVE, SIX,
@@ -29,7 +29,7 @@ public class Card {
 		
 		this.mSuit = suit; 
 		this.mValue = value; 
-		this.mIsInPlay = false; 
+		this.mIsInPlay = true; 
 		
 	}
 	
@@ -115,7 +115,7 @@ public class Card {
 			firstPart = "9";
 			break;
 		case TEN:
-			firstPart = "10";
+			firstPart = "t";
 			break;
 		case JACK:
 			firstPart = "j";
@@ -132,6 +132,18 @@ public class Card {
 		
 		//the result of adding the parts of the file names 
 		return firstPart + secondPart; 
+	}
+
+	/**
+	 * Comparing for sorting a deck by suit
+	 * @param cardToCompare
+	 * @return
+	 */
+	@Override
+	public int compareTo(Card cardToCompare) {
+		
+		return mSuit.name().compareToIgnoreCase(cardToCompare.mSuit.name());
+		
 	}
 	
 	

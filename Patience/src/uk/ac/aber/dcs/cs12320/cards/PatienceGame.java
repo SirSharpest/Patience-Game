@@ -81,7 +81,7 @@ public class PatienceGame {
 	 * based on what is received through the @handleInput() 
 	 */
 	private static void performLogic(){
-		
+		mCardStrings = mDeck.printActiveCards();
 	}
 	
 	/**
