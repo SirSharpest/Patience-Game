@@ -61,11 +61,11 @@ public class Window extends JFrame{
 		canvas = new ThePanel();
 		
 		//This is the max size I expect it to ever be
-		canvas.setPreferredSize(new Dimension(580, 860));
+		canvas.setPreferredSize(new Dimension(585, 348));
 		
 		//Text area information
 		textArea = new JTextArea();
-		textArea.setPreferredSize(new Dimension(310, 860));
+		textArea.setPreferredSize(new Dimension(300, 860));
 		textArea.setEditable(false);
 		
 		//Button area information
@@ -96,13 +96,12 @@ public class Window extends JFrame{
 		scrollText.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		
 		//screen size
-		this.setSize(900, 440);
+		this.setSize(900, 390);
 	
 		//adding panels to the screen 
 		this.add(scrollText, BorderLayout.EAST);
 		this.add(buttonPanel, BorderLayout.SOUTH);
 		this.add(scrollPane, BorderLayout.WEST);
-		
 		
 		//DO NOT EVER RESIZE IT WILL MESS UP 
 		//MORE THAN I CARE TO ADMIT OR TRY TO FIX :)
