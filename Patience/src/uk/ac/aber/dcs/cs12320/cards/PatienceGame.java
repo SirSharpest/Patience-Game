@@ -12,7 +12,6 @@ import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
 	
-	private static ArrayList<String> mCardStrings; 
 	
 	private static boolean mGameIsRunning; 
 	
@@ -33,7 +32,7 @@ public class PatienceGame {
 		//create a deck of cards and shuffle them 
 		mGameIsRunning = true; 
 		mWindow = new Window(); 
-		mCardStrings = new ArrayList<String>();
+
 		mDeck = new Deck();
 		
 		//Setup custom output stream
@@ -44,7 +43,7 @@ public class PatienceGame {
 		//Printing menu once initially 
 		printMenu();
 		
-		updateCards();
+		
 		
 		//Drop into the game loop 
 		while(mGameIsRunning){
@@ -96,9 +95,9 @@ public class PatienceGame {
 	 * Game logic will be handled here 
 	 * based on what is received through the @handleInput() 
 	 */
-	private static void updateCards(){
-		mCardStrings = mDeck.printActiveCards();
-	}
+//	private static void updateCards(){
+//		
+//	}
 	
 	/**
 	 * Everything here will be drawn to the screen 
@@ -108,7 +107,7 @@ public class PatienceGame {
 		//update what to draw
 		//updateCards();
 		//Draw to the window
-		mWindow.cardDisplay(mCardStrings);
+		mWindow.cardDisplay(mDeck.printActiveCards());
 		
 		//Used to determine the need of the scroll bar on bottom of jFrame
 		mWindow.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
@@ -116,8 +115,7 @@ public class PatienceGame {
 	}
 	
 	public static void shuffleDeck(){
-		Collections.shuffle(mCardStrings);
-		Collections.shuffle(mCardStrings);
+
 	
 	}
 	
@@ -125,6 +123,10 @@ public class PatienceGame {
 		
 		startGame(); 
 
+	}
+	
+	public static void drawCard(){
+		mDeck.drawNextCard();
 	}
 
 }

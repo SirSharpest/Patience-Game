@@ -30,6 +30,7 @@ public class ButtonListener implements ActionListener{
 		//button 1 handle 
 		if(e.getSource() == buttons.get(0)){
 			System.out.println("1");
+			
 		}
 		
 		//button 2 handle 
@@ -40,7 +41,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 3 handle 
 		if(e.getSource() == buttons.get(2)){
-			System.out.println("3");
+			PatienceGame.drawCard();
 		}
 		
 		//button 4 handle 

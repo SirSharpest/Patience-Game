@@ -5,8 +5,10 @@ import java.util.Collections;
 
 public class Deck {
 	
-	private ArrayList<PlayingCard> mCards; 
+	private ArrayList<Card> mCards; 
 	private int mNumCardsInPlay; 
+	
+	
 	
 	/**
 	 * This constructor will build a deck of 52 cards
@@ -17,19 +19,68 @@ public class Deck {
 	public Deck(){
 		
 		//Initialise the deck 
-		mCards = new ArrayList<PlayingCard>();
+		mCards = new ArrayList<Card>();
 		
 		//Loop through the enums of Card class 
 		//assign each one to a new position in the card pack
-		for (PlayingCard.Suit suit : PlayingCard.Suit.values()) {
-			for(PlayingCard.Value value : PlayingCard.Value.values()){
-				mCards.add(new PlayingCard(suit, value));
+		for (Card.Suit suit : Card.Suit.values()) {
+			for(Card.Value value : Card.Value.values()){
+				mCards.add(new FaceDownCard(suit, value));
 			}
 		}
 		
 		//Once deck is created, sort by suit 
 		this.sortDeck();
 		
+	}
+	
+	/**
+	 * Draws a card to be put into the game
+	 */
+	public void drawNextCard(){
+		
+		//get number of cards in play
+		updateNumCardsInPlay();
+		//change type to be drawn
+		reverseFace(mNumCardsInPlay);
+		
+		
+	}
+	
+	
+	private void reverseFace(int index){
+		
+		
+		//if it is a FaceDownCard then we reverse it to FaceUp
+		if(this.mCards.get(index) instanceof FaceDownCard){
+			FaceUpCard tmpCard = new FaceUpCard(mCards.get(index).getSuit(), mCards.get(index).getValue());
+			tmpCard.setLocation(0);
+			mCards.set(index, tmpCard);	
+		}
+		
+		//if it is a FaceUpCard then we reverse it to FaceDown
+		else if(this.mCards.get(index) instanceof FaceUpCard){
+			FaceDownCard tmpCard = new FaceDownCard(mCards.get(index).getSuit(), mCards.get(index).getValue());
+			mCards.set(index, tmpCard);	
+			
+		}
+		
+		
+	}
+	
+	/**
+	 * Update the number of cards that are in play
+	 */
+	private void updateNumCardsInPlay(){
+		int counter = 0; 
+		
+		for(int i = 0; i < mCards.size(); i++){
+			if(mCards.get(i) instanceof FaceUpCard){
+				counter++;
+			}
+		}
+		
+		this.mNumCardsInPlay = counter; 
 	}
 	
 	/**
@@ -43,7 +94,7 @@ public class Deck {
 		
 		for (int i = 0; i < this.mCards.size(); i++) {
 			if(this.mCards.get(i).isCardInPlay() == true){
-				activeCards.add(mCards.get(i).toString());
+				activeCards.add(mCards.get(i).getImageName());
 				
 			}
 		}
