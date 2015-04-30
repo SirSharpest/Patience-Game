@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Deck {
 	
-	private ArrayList<Card> mCards; 
+	private ArrayList<PlayingCard> mCards; 
 	private int mNumCardsInPlay; 
 	
 	/**
@@ -17,13 +17,13 @@ public class Deck {
 	public Deck(){
 		
 		//Initialise the deck 
-		mCards = new ArrayList<Card>();
+		mCards = new ArrayList<PlayingCard>();
 		
 		//Loop through the enums of Card class 
 		//assign each one to a new position in the card pack
-		for (Card.Suit suit : Card.Suit.values()) {
-			for(Card.Value value : Card.Value.values()){
-				mCards.add(new Card(suit, value));
+		for (PlayingCard.Suit suit : PlayingCard.Suit.values()) {
+			for(PlayingCard.Value value : PlayingCard.Value.values()){
+				mCards.add(new PlayingCard(suit, value));
 			}
 		}
 		
@@ -43,7 +43,7 @@ public class Deck {
 		
 		for (int i = 0; i < this.mCards.size(); i++) {
 			if(this.mCards.get(i).isCardInPlay() == true){
-				activeCards.add(mCards.get(i).getImageName());
+				activeCards.add(mCards.get(i).toString());
 				
 			}
 		}
@@ -67,5 +67,7 @@ public class Deck {
 	public void sortDeck(){
 		Collections.sort(mCards);
 	}
+	
+	
 
 }
