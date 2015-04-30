@@ -1,5 +1,6 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -7,6 +8,7 @@ public class Deck {
 	
 	private ArrayList<Card> mCards; 
 	private int mNumCardsInPlay; 
+	private int mNumCardsDrawn; 
 	
 	
 	
@@ -21,6 +23,9 @@ public class Deck {
 		//Initialise the deck 
 		mCards = new ArrayList<Card>();
 		
+		//used to count the turns so that no more than 52 cards are drawn in a game 
+		mNumCardsDrawn = 0;
+		
 		//Loop through the enums of Card class 
 		//assign each one to a new position in the card pack
 		for (Card.Suit suit : Card.Suit.values()) {
@@ -32,6 +37,15 @@ public class Deck {
 		//Once deck is created, sort by suit 
 		this.sortDeck();
 		
+		
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void shuffleDeck(){
+		
 	}
 	
 	/**
@@ -39,12 +53,28 @@ public class Deck {
 	 */
 	public void drawNextCard(){
 		
+		
+		
 		//get number of cards in play
 		updateNumCardsInPlay();
-		//change type to be drawn
-		reverseFace(mNumCardsInPlay);
 		
 		
+			//change type to be drawn
+			reverseFace(mNumCardsInPlay);
+		
+
+		
+		
+	}
+	
+	/**
+	 * Removes the last card drawn from the screen 
+	 * 
+	 */
+	public void removePreviousCard(){
+		
+		updateNumCardsInPlay();
+		reverseFace(mNumCardsInPlay -1);
 	}
 	
 	
@@ -93,7 +123,7 @@ public class Deck {
 		ArrayList<String> activeCards = new ArrayList<String>(); 
 		
 		for (int i = 0; i < this.mCards.size(); i++) {
-			if(this.mCards.get(i).isCardInPlay() == true){
+			if(this.mCards.get(i) instanceof FaceUpCard){
 				activeCards.add(mCards.get(i).getImageName());
 				
 			}

@@ -110,7 +110,7 @@ public class PatienceGame {
 		mWindow.cardDisplay(mDeck.printActiveCards());
 		
 		//Used to determine the need of the scroll bar on bottom of jFrame
-		mWindow.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 73, 300));
+		mWindow.setCanvasPreferredSize(new Dimension(mDeck.getNumCardsInPlay() * 75, 300));
 		
 	}
 	
@@ -127,6 +127,10 @@ public class PatienceGame {
 	
 	public static void drawCard(){
 		mDeck.drawNextCard();
+	}
+	
+	public static void removeLastCard(){
+		mDeck.removePreviousCard();
 	}
 
 }

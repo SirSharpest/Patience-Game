@@ -46,6 +46,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 4 handle 
 		if(e.getSource() == buttons.get(3)){
+			PatienceGame.removeLastCard();
 			System.out.println("4");
 		}
 		
