@@ -108,9 +108,20 @@ public class PatienceGame {
 		
 	}
 	
+	/**
+	 * Will shuffle the card deck
+	 * or tell the user that it cannot be
+	 */
 	public static void shuffleDeck(){
-
-	
+		if(mDeck.getCanShuffle() && !mDeck.getShuffleStatus()){
+			mDeck.shuffleDeck();
+			System.out.println("Deck has been shuffled");
+		}
+		else{
+			System.out.println("Sorry cannot shuffle at this time");
+		}
+		
+		
 	}
 	
 	public static void main(String args[]) {
