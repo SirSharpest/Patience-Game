@@ -150,8 +150,12 @@ public class PatienceGame {
 		mWindow.infoBox(mDeck.listDeck(), "Pack contents!");
 	}
 	
-	public static void removeLastCard(){
-		mDeck.removePreviousCard();
+	public static void moveOntoPrevious(){
+		mDeck.moveOntoPrevious();
+	}
+	
+	public static void moveOnto2Previous(){
+		mDeck.moveOnto2Previous();
 	}
 
 }

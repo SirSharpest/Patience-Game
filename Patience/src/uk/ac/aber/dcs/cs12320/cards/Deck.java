@@ -1,14 +1,17 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class Deck {
 	
 	private ArrayList<Card> mCards; 
+	private ArrayList<FaceUpCard> mFaceupCards;
 	private int mNumCardsInPlay; 
 	private int mNumCardsDrawn; 
 	private boolean mDeckHasBeenShuffled; 
+	
 	
 	
 	
@@ -23,9 +26,11 @@ public class Deck {
 		
 		//Initialise the deck 
 		mCards = new ArrayList<Card>();
+		mFaceupCards = new ArrayList<FaceUpCard>();
 		
 		//used to count the turns so that no more than 52 cards are drawn in a game 
 		mNumCardsDrawn = 0;
+		mNumCardsInPlay = 0; 
 		
 		//set deck flag of shuffled to be false
 		mDeckHasBeenShuffled = false; 
@@ -42,9 +47,6 @@ public class Deck {
 		
 		//Once deck is created, sort by suit 
 		this.sortDeck();
-		
-		
-		
 	}
 	
 	/**
@@ -56,6 +58,12 @@ public class Deck {
 	}
 	
 
+	/**
+	 * This will return a string builder 
+	 * cocatinated string of all the cards in their 
+	 * current order 
+	 * @return
+	 */
 	public String listDeck(){
 		StringBuilder sb = new StringBuilder();
 		
@@ -90,60 +98,30 @@ public class Deck {
 	 */
 	public void drawNextCard(){
 		
-		//increment the amount of cards drawn 
-		mNumCardsDrawn++; 
-		
-		//get number of cards in play
-		updateNumCardsInPlay();
-		
-		
-			//change type to be drawn
-			reverseFace(mNumCardsInPlay);
+		mFaceupCards.add(new FaceUpCard(mCards.get(mNumCardsDrawn).getSuit(), mCards.get(mNumCardsDrawn).getValue()));
+		//increase drawn cards count
+		mNumCardsDrawn++;
+
 	}
 	
 	/**
-	 * Removes the last card drawn from the screen 
-	 * 
+	 * Will swap two cards and then remove one
+	 * @param oldIndex
+	 * @param newIndex
 	 */
-	public void removePreviousCard(){
+	public void replaceCard(int oldIndex, int newIndex){
 		
-		updateNumCardsInPlay();
-		reverseFace(mNumCardsInPlay -1);
-	}
-	
-	
-	private void reverseFace(int index){
-		
-		
-		//if it is a FaceDownCard then we reverse it to FaceUp
-		if(this.mCards.get(index) instanceof FaceDownCard){
-			FaceUpCard tmpCard = new FaceUpCard(mCards.get(index).getSuit(), mCards.get(index).getValue(), mNumCardsInPlay);
-			mCards.set(index, tmpCard);	
-		}
-		
-		//if it is a FaceUpCard then we reverse it to FaceDown
-		else if(this.mCards.get(index) instanceof FaceUpCard){
-			FaceDownCard tmpCard = new FaceDownCard(mCards.get(index).getSuit(), mCards.get(index).getValue());
-			mCards.set(index, tmpCard);	
-			
-		}
-		
+		Collections.swap(mFaceupCards, oldIndex, newIndex);
+		mFaceupCards.remove(oldIndex);
 		
 	}
+	
 	
 	/**
 	 * Update the number of cards that are in play
 	 */
 	private void updateNumCardsInPlay(){
-		int counter = 0; 
-		
-		for(int i = 0; i < mCards.size(); i++){
-			if(mCards.get(i) instanceof FaceUpCard){
-				counter++;
-			}
-		}
-		
-		this.mNumCardsInPlay = counter; 
+		mNumCardsInPlay = mFaceupCards.size();
 	}
 	
 	/**
@@ -155,14 +133,10 @@ public class Deck {
 		
 		ArrayList<String> activeCards = new ArrayList<String>(); 
 		
-		for (int i = 0; i < this.mCards.size(); i++) {
-			if(this.mCards.get(i) instanceof FaceUpCard){
-				activeCards.add(mCards.get(i).getImageName());
+		for (int i = 0; i < this.mFaceupCards.size(); i++) {
+				activeCards.add(mFaceupCards.get(i).getImageName());
 				
-			}
 		}
-		
-		this.mNumCardsInPlay = activeCards.size();
 		return activeCards;
 	}
 	
@@ -172,6 +146,7 @@ public class Deck {
 	 */
 	public int getNumCardsInPlay(){
 		
+		updateNumCardsInPlay();
 		return mNumCardsInPlay;
 	}
 	
@@ -182,6 +157,26 @@ public class Deck {
 		Collections.sort(mCards);
 	}
 	
+	/**
+	 * This will allow the game to perform a movement of one card
+	 * onto the previous one, covering it 
+	 */
+	public void moveOntoPrevious(){
+		
+		replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-2);
+	}
+	
+	public void moveOnto2Previous(){
+		replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-4);
+	}
+	
+	/**
+	 * Fixes and corrects the locations of each faceup card
+	 */
+	public void sortLocations(){
+		
+
+	}
 	
 
 }

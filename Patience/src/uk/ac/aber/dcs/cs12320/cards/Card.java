@@ -159,6 +159,27 @@ public abstract class Card implements Comparable<Card> {
 	public Value getValue() {
 		return mValue;
 	}
+
+
+
+	/**
+	 * Java generated file, to test equality 
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		if (mSuit != other.mSuit)
+			return false;
+		if (mValue != other.mValue)
+			return false;
+		return true;
+	}
 	
 	
 	
