@@ -117,8 +117,7 @@ public class Deck {
 		
 		//if it is a FaceDownCard then we reverse it to FaceUp
 		if(this.mCards.get(index) instanceof FaceDownCard){
-			FaceUpCard tmpCard = new FaceUpCard(mCards.get(index).getSuit(), mCards.get(index).getValue());
-			tmpCard.setLocation(0);
+			FaceUpCard tmpCard = new FaceUpCard(mCards.get(index).getSuit(), mCards.get(index).getValue(), mNumCardsInPlay);
 			mCards.set(index, tmpCard);	
 		}
 		

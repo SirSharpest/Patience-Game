@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
@@ -32,6 +33,7 @@ public class Window extends JFrame{
 	 */
 	private static final long serialVersionUID = 1L;
 	private ThePanel canvas;
+	JScrollBar horizontal;
 	private JTextArea textArea; 
 	private CustomStream streamTextArea;
 
@@ -92,6 +94,8 @@ public class Window extends JFrame{
 		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
 		
+		  horizontal = scrollPane.getHorizontalScrollBar();
+		    
 		
 		//Scroll pane for text section
 		JScrollPane scrollText = new JScrollPane(textArea);
@@ -111,10 +115,7 @@ public class Window extends JFrame{
 		//MORE THAN I CARE TO ADMIT OR TRY TO FIX :)
 		this.setResizable(false);
 		
-		
-		
-		
-
+	
 		setVisible(true); // Display the window
 		
 		
@@ -126,6 +127,7 @@ public class Window extends JFrame{
 	 */
 	public void setCanvasPreferredSize(Dimension size){
 		this.canvas.setPreferredSize(size);
+		horizontal.setValue( horizontal.getMaximum() );
 		canvas.revalidate();
 		canvas.repaint();
 		

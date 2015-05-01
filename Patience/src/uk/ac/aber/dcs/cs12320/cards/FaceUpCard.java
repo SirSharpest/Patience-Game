@@ -4,9 +4,10 @@ public class FaceUpCard extends Card {
 
 	private int mLocation; 
 	
-	public FaceUpCard(Suit suit, Value value) {
+	public FaceUpCard(Suit suit, Value value, int location) {
 		super(suit, value);
 		super.setCardInPlay(true);
+		setLocation(location);
 		
 	}
 	
