@@ -9,8 +9,10 @@ import java.awt.Toolkit;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -114,6 +116,8 @@ public class Window extends JFrame{
 		
 
 		setVisible(true); // Display the window
+		
+		
 	}
 	/**
 	 * This method allows for the screen to be resized whenever 
@@ -141,6 +145,19 @@ public class Window extends JFrame{
 	public ArrayList<JButton> getButtons() {
 		return buttons;
 	}
+	
+	/**
+	 * This will print out a message box with the info of the parameters 
+	 * @param infoMessage
+	 * @param titleBar
+	 */
+    public void infoBox(String infoMessage, String titleBar)
+    {
+        JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+	
+	
+	
 	/**
 	 * Displays all cards
 	 * 

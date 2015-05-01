@@ -29,7 +29,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 1 handle 
 		if(e.getSource() == buttons.get(0)){
-			System.out.println("1");
+			PatienceGame.printDeck();
 			
 		}
 		

@@ -2,12 +2,6 @@ package uk.ac.aber.dcs.cs12320.cards;
 
 import java.awt.Dimension;
 import java.io.PrintStream;
-import java.util.ArrayList;
-
-
-
-import java.util.Collections;
-
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
@@ -126,7 +120,23 @@ public class PatienceGame {
 	}
 	
 	public static void drawCard(){
-		mDeck.drawNextCard();
+		
+		//if more cards than in the deck have been drawn then
+		//don't draw anymore 
+		if(mDeck.getNumCardsDrawn() <= 51){
+			mDeck.drawNextCard();
+		}
+		else{
+			System.out.println("No more cards to draw!");
+		}
+		
+	}
+	
+	/**
+	 * Prints the deck via a pop up message box
+	 */
+	public static void printDeck(){
+		mWindow.infoBox(mDeck.listDeck(), "Pack contents!");
 	}
 	
 	public static void removeLastCard(){

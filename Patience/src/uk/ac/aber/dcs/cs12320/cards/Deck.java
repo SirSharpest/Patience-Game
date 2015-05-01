@@ -1,6 +1,5 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -41,6 +40,18 @@ public class Deck {
 		
 	}
 	
+	public String listDeck(){
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < mCards.size(); i++) {
+			sb.append(mCards.get(i).getImageName());
+			sb.append(" ");
+		}
+		
+		return sb.toString();
+		
+	}
+	
 	/**
 	 * 
 	 */
@@ -49,11 +60,20 @@ public class Deck {
 	}
 	
 	/**
+	 * Gets the number of cards drawn so far
+	 * @return mNumCardsDrawn - cards played so far
+	 */
+	public int getNumCardsDrawn(){
+		return this.mNumCardsDrawn;
+	}
+	
+	/**
 	 * Draws a card to be put into the game
 	 */
 	public void drawNextCard(){
 		
-		
+		//increment the amount of cards drawn 
+		mNumCardsDrawn++; 
 		
 		//get number of cards in play
 		updateNumCardsInPlay();
@@ -61,10 +81,6 @@ public class Deck {
 		
 			//change type to be drawn
 			reverseFace(mNumCardsInPlay);
-		
-
-		
-		
 	}
 	
 	/**
