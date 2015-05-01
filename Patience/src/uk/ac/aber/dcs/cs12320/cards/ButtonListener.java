@@ -55,7 +55,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 6 handle 
 		if(e.getSource() == buttons.get(5)){
-			System.out.println("6");
+			PatienceGame.amalgamate();
 		}
 		
 		//button 7 handle 

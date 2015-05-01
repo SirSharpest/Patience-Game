@@ -170,6 +170,26 @@ public class Deck {
 		replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-4);
 	}
 	
+	
+	/**
+	 * Amalgamates 2moves into one
+	 */
+	public void amalgamate(){
+		int origin = mFaceupCards.size() -1; 
+		int firstSwap = mFaceupCards.size() -4;
+		int secondSwap = mFaceupCards.size() -5; 
+		
+		Collections.swap(mFaceupCards, origin, firstSwap);
+		Collections.swap(mFaceupCards, firstSwap, secondSwap);
+		
+		
+		mFaceupCards.remove(origin);
+		mFaceupCards.remove(firstSwap);
+		
+	}
+		
+	
+	
 	/**
 	 * Fixes and corrects the locations of each faceup card
 	 */

@@ -150,12 +150,25 @@ public class PatienceGame {
 		mWindow.infoBox(mDeck.listDeck(), "Pack contents!");
 	}
 	
+	/**
+	 * Moves the rightmost card onto the previous one
+	 */
 	public static void moveOntoPrevious(){
 		mDeck.moveOntoPrevious();
 	}
 	
+	/**
+	 * Moves the rightmost card over 2 cards and onto the 3rd
+	 */
 	public static void moveOnto2Previous(){
 		mDeck.moveOnto2Previous();
+	}
+	
+	/**
+	 * Amalgamates 2moves into one
+	 */
+	public static void amalgamate(){
+		mDeck.amalgamate();
 	}
 
 }
