@@ -113,7 +113,7 @@ public class PatienceGame {
 	 * or tell the user that it cannot be
 	 */
 	public static void shuffleDeck(){
-		if(mDeck.getCanShuffle() && !mDeck.getShuffleStatus()){
+		if(mDeck.getNumCardsDrawn() <= 0 && !mDeck.getShuffleStatus()){
 			mDeck.shuffleDeck();
 			System.out.println("Deck has been shuffled");
 		}

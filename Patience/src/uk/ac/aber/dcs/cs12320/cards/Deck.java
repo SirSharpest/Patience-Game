@@ -9,7 +9,7 @@ public class Deck {
 	private int mNumCardsInPlay; 
 	private int mNumCardsDrawn; 
 	private boolean mDeckHasBeenShuffled; 
-	private boolean mDeckCanBeShuffled; 
+	
 	
 	
 	
@@ -30,7 +30,7 @@ public class Deck {
 		//set deck flag of shuffled to be false
 		mDeckHasBeenShuffled = false; 
 		//set deck flag of  can be shuffled to be true
-		mDeckCanBeShuffled = true;
+		
 		
 		//Loop through the enums of Card class 
 		//assign each one to a new position in the card pack
@@ -55,13 +55,7 @@ public class Deck {
 		return this.mDeckHasBeenShuffled;
 	}
 	
-	/**
-	 * Returns the answer to if the deck can be shuffled again
-	 * @return
-	 */
-	public boolean getCanShuffle(){
-		return this.mDeckCanBeShuffled;
-	}
+
 	public String listDeck(){
 		StringBuilder sb = new StringBuilder();
 		
