@@ -21,7 +21,6 @@ public abstract class Card implements Comparable<Card> {
 	final private Suit mSuit; 
 	final private Value mValue; 
 	
-	private boolean mIsInPlay; 
 	
 	/**
 	 * Public constructor which assigns the values 
@@ -30,28 +29,11 @@ public abstract class Card implements Comparable<Card> {
 	public Card (final Suit suit, final Value value){
 		
 		this.mSuit = suit; 
-		this.mValue = value; 
-		this.mIsInPlay = true; 
-		
+		this.mValue = value; 	
 	}
 	
-	/**
-	 * Tells the class that the card is currently in play
-	 * and needs drawn to screen
-	 * 
-	 * @param cardStatus
-	 */
-	public void setCardInPlay(boolean cardStatus){
-		this.mIsInPlay = cardStatus;
-	}
+
 	
-	/**
-	 * Provides the boolean that states the status of the card 
-	 * @return mIsInPlay 
-	 */
-	public boolean isCardInPlay(){
-		return this.mIsInPlay;
-	}
 	
 	/**
 	 * Just an updated toString method 

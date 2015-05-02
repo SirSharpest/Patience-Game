@@ -77,6 +77,24 @@ public class Deck {
 	}
 	
 	/**
+	 * This will return a string builder 
+	 * cocatinated string of all the cards in their 
+	 * current order 
+	 * @return
+	 */
+	public String listGameBoard(){
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < mFaceupCards.size(); i++) {
+			sb.append(mFaceupCards.get(i).getImageName());
+			sb.append(" ");
+		}
+		
+		return sb.toString();
+		
+	}
+	
+	/**
 	 * Shuffles the deck of cards
 	 * and sets boolean flag to true
 	 */
@@ -200,10 +218,15 @@ public class Deck {
 	/**
 	 * Amalgamates 2moves into one
 	 */
-	public void amalgamate(){
+	public boolean amalgamate(){
 		int origin = mFaceupCards.size() -1; 
 		int firstSwap = mFaceupCards.size() -4;
 		int secondSwap = mFaceupCards.size() -5; 
+		
+		if(origin < 4){
+			return false;
+		}
+		
 		
 		Collections.swap(mFaceupCards, origin, firstSwap);
 		Collections.swap(mFaceupCards, firstSwap, secondSwap);
@@ -212,17 +235,14 @@ public class Deck {
 		mFaceupCards.remove(origin);
 		mFaceupCards.remove(firstSwap);
 		
+		return true;
+		
 	}
+	
+	
 		
 	
 	
-	/**
-	 * Fixes and corrects the locations of each faceup card
-	 */
-	public void sortLocations(){
-		
-
-	}
 	
 
 }

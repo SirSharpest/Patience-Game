@@ -61,12 +61,12 @@ public class ButtonListener implements ActionListener{
 		
 		//button 7 handle 
 		if(e.getSource() == buttons.get(6)){
-			System.out.println("7");
+			PatienceGame.playForMe(1);
 		}
 		
 		//button 8 handle 
 		if(e.getSource() == buttons.get(7)){
-			System.out.println("8");
+			PatienceGame.playForMe(PatienceGame.getIntInput());
 		}
 		
 		//button 9 handle 
@@ -76,7 +76,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 10 handle 
 		if(e.getSource() == buttons.get(9)){
-			System.out.println("10");
+			PatienceGame.currentBoardAsTxt();
 		}
 		
 		//button 11 handle 

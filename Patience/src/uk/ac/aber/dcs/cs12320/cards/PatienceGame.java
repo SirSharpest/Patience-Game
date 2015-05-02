@@ -70,6 +70,9 @@ public class PatienceGame {
 				e.printStackTrace();
 			}
 			
+			
+			
+			
 			//display & render the game to the screen
 			renderWindow();
 
@@ -145,7 +148,7 @@ public class PatienceGame {
 			mDeck.drawNextCard();
 		}
 		else{
-			System.out.println("No more cards to draw!");
+			mWindow.infoBox("No more cards to draw", "Error");
 		}
 		
 	}
@@ -175,21 +178,27 @@ public class PatienceGame {
 	 * Moves the rightmost card onto the previous one
 	 */
 	public static void moveOntoPrevious(){
-		mDeck.moveOntoPrevious();
+		if(!mDeck.moveOntoPrevious()){
+			mWindow.infoBox("Illegal move", "Error");
+		}
 	}
 	
 	/**
 	 * Moves the rightmost card over 2 cards and onto the 3rd
 	 */
 	public static void moveOnto2Previous(){
-		mDeck.moveOnto2Previous();
+		if(!mDeck.moveOnto2Previous()){
+			mWindow.infoBox("Illegal move", "Error");
+		}
 	}
 	
 	/**
 	 * Amalgamates 2moves into one
 	 */
 	public static void amalgamate(){
-		mDeck.amalgamate();
+		if(!mDeck.amalgamate()){
+			mWindow.infoBox("Illegal move", "Error");
+		}
 	}
 	
 	/**
@@ -264,7 +273,49 @@ public class PatienceGame {
 			}
 	}
 	
+	public static void playForMe(int times){
+		
+		if(times == 0){
+			return;
+		}
+		
+		for(int i = 0; i < times; i++){
+			if(mDeck.amalgamate()){
+				continue;
+			}
+			else if(mDeck.moveOnto2Previous()){
+				continue;
+			}
+			else if(mDeck.moveOntoPrevious()){
+				continue;
+			}
+			else if(mDeck.getNumCardsDrawn() < 52){
+				mDeck.drawNextCard();
+				continue;
+			}
+			else{
+				mWindow.infoBox("No suitable moves", "Game over it seems");
+			}
+		}
+		
+	}
 	
+	public static int getIntInput(){
+		String input = mWindow.getDialogBoxInput("Enter a number", "");
+		try{
+			int num = Integer.parseInt(input);
+			return num;
+			
+		}catch (NumberFormatException e){
+			mWindow.infoBox("Invalid Input", "Error");
+		}
+		return 0;
+	}
+	
+	public static void currentBoardAsTxt(){
+		
+		mWindow.infoBox(mDeck.listGameBoard(),"Cards in play");
+	}
 
 }
 
