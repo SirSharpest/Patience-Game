@@ -14,73 +14,81 @@ import javax.swing.JButton;
 public class ButtonListener implements ActionListener{
 
 	
-	private ArrayList<JButton> buttons; 
+	private ArrayList<JButton> mButtons; 
 	
 	public ButtonListener() {
 		
 	}
 	
+	/**
+	 * Loads in a list of buttons that the listener needs to function 
+	 * and apply itself to!
+	 * @param buttonsToListen
+	 */
 	public void setButtonsToListen(ArrayList<JButton> buttonsToListen){
-		this.buttons = buttonsToListen;
+		this.mButtons = buttonsToListen;
 	}
 	
+	/**
+	 * Tells the listener what functions to trigger 
+	 * if an action occurs 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
 		
 		//button 1 handle 
-		if(e.getSource() == buttons.get(0)){
+		if(e.getSource() == mButtons.get(0)){
 			PatienceGame.printDeck();
-			
 		}
 		
 		//button 2 handle 
-		if(e.getSource() == buttons.get(1)){
+		if(e.getSource() == mButtons.get(1)){
 			PatienceGame.shuffleDeck();
 		}
 		
 		//button 3 handle 
-		if(e.getSource() == buttons.get(2)){
+		if(e.getSource() == mButtons.get(2)){
 			PatienceGame.drawCard();
 		}
 		
 		//button 4 handle 
-		if(e.getSource() == buttons.get(3)){
+		if(e.getSource() == mButtons.get(3)){
 			PatienceGame.moveOntoPrevious();
 		}
 		
 		//button 5 handle 
-		if(e.getSource() == buttons.get(4)){
+		if(e.getSource() == mButtons.get(4)){
 			PatienceGame.moveOnto2Previous();
 		}
 		
 		//button 6 handle 
-		if(e.getSource() == buttons.get(5)){
+		if(e.getSource() == mButtons.get(5)){
 			PatienceGame.amalgamate();
 		}
 		
 		//button 7 handle 
-		if(e.getSource() == buttons.get(6)){
+		if(e.getSource() == mButtons.get(6)){
 			PatienceGame.playForMe(1);
 		}
 		
 		//button 8 handle 
-		if(e.getSource() == buttons.get(7)){
+		if(e.getSource() == mButtons.get(7)){
 			PatienceGame.playForMe(PatienceGame.getIntInput());
 		}
 		
 		//button 9 handle 
-		if(e.getSource() == buttons.get(8)){
+		if(e.getSource() == mButtons.get(8)){
 			PatienceGame.printScores();
 		}
 		
 		//button 10 handle 
-		if(e.getSource() == buttons.get(9)){
+		if(e.getSource() == mButtons.get(9)){
 			PatienceGame.currentBoardAsTxt();
 		}
 		
 		//button 11 handle 
-		if(e.getSource() == buttons.get(10)){
+		if(e.getSource() == mButtons.get(10)){
 			PatienceGame.save();
 			PatienceGame.printScores();
 			System.exit(0);

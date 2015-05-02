@@ -34,8 +34,6 @@ public class PatienceGame {
 	 */
 	private static void startGame() {
 		
-		
-		
 		//perform the set up of a game here
 		//create a deck of cards and shuffle them 
 		mGameIsRunning = true; 
@@ -54,12 +52,10 @@ public class PatienceGame {
 		
 		//Printing menu once initially 
 		printMenu();	
-		
-		
+			
 		//Drop into the game loop 
 		while(mGameIsRunning){
 		
-			
 			//Consume less CPU by sleeping a slight amount 
 			//Hopefully will not affect player, unless they 
 			//have computer cat like reflexes
@@ -69,14 +65,9 @@ public class PatienceGame {
 				
 				e.printStackTrace();
 			}
-			
-			
-			
-			
+				
 			//display & render the game to the screen
 			renderWindow();
-
-			
 		}
 		
 	}
@@ -103,7 +94,6 @@ public class PatienceGame {
 		System.out.println("11. Quit");
 	}
 	
-
 	
 	/**
 	 * Everything here will be drawn to the screen 
@@ -134,12 +124,19 @@ public class PatienceGame {
 		
 	}
 	
+	/**
+	 * Starts the program
+	 * @param args
+	 */
 	public static void main(String args[]) {
 		
 		startGame(); 
 
 	}
 	
+	/**
+	 * Draws a card if possible for the user
+	 */
 	public static void drawCard(){
 		
 		//if more cards than in the deck have been drawn then
@@ -160,6 +157,10 @@ public class PatienceGame {
 		mWindow.infoBox(mDeck.listDeck(), "Pack contents!");
 	}
 	
+	/**
+	 * Prints a list of the top scorers to the 
+	 * user 
+	 */
 	public static void printScores(){
 		
 		StringBuilder sb = new StringBuilder();
@@ -273,6 +274,12 @@ public class PatienceGame {
 			}
 	}
 	
+	/**
+	 * this function will play for the user by 
+	 * making the largest jump that is possible in a turn,
+	 * if no jump is possible then a card will be drawn 
+	 * @param times
+	 */
 	public static void playForMe(int times){
 		
 		if(times == 0){
@@ -300,6 +307,11 @@ public class PatienceGame {
 		
 	}
 	
+	/**
+	 * this will get a number integer value from the user
+	 * through the use of a pop up box 
+	 * @return
+	 */
 	public static int getIntInput(){
 		String input = mWindow.getDialogBoxInput("Enter a number", "");
 		try{
@@ -312,6 +324,10 @@ public class PatienceGame {
 		return 0;
 	}
 	
+	/**
+	 * Displays the current board status 
+	 * as text for the user 
+	 */
 	public static void currentBoardAsTxt(){
 		
 		mWindow.infoBox(mDeck.listGameBoard(),"Cards in play");
