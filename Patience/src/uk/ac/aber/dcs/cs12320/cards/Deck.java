@@ -108,11 +108,18 @@ public class Deck {
 	 * Will swap two cards and then remove one
 	 * @param oldIndex
 	 * @param newIndex
+	 * @return boolean value indicating if this worked or was allowed
 	 */
-	public void replaceCard(int oldIndex, int newIndex){
+	public boolean replaceCard(int oldIndex, int newIndex){
 		
-		Collections.swap(mFaceupCards, oldIndex, newIndex);
-		mFaceupCards.remove(oldIndex);
+		//if they are the same suit or the same value
+		if(mFaceupCards.get(oldIndex).equals(mFaceupCards.get(newIndex))){
+			Collections.swap(mFaceupCards, oldIndex, newIndex);
+			mFaceupCards.remove(oldIndex);
+			return true; 
+		}
+		
+		return false; 
 		
 	}
 	
@@ -161,13 +168,27 @@ public class Deck {
 	 * This will allow the game to perform a movement of one card
 	 * onto the previous one, covering it 
 	 */
-	public void moveOntoPrevious(){
+	public boolean moveOntoPrevious(){
 		
-		replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-2);
+		if(replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-2)){
+			return true; 
+		}
+		else{
+			return false; 
+		}
 	}
 	
-	public void moveOnto2Previous(){
-		replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-4);
+	/**
+	 * This makes the movement of twice onto 
+	 * @return
+	 */
+	public boolean moveOnto2Previous(){
+		if(replaceCard(mFaceupCards.size()-1, mFaceupCards.size()-4)){
+			return true; 
+		}
+		else{
+			return false; 
+		}
 	}
 	
 	

@@ -3,6 +3,8 @@
  */
 package uk.ac.aber.dcs.cs12320.cards;
 
+
+
 /**
  * @author Nathan
  *
@@ -163,22 +165,19 @@ public abstract class Card implements Comparable<Card> {
 
 
 	/**
-	 * Java generated file, to test equality 
+	 * Checks if suit or value of another card matches 
+	 * @param 
 	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean equals(Card other) { 
+		
+		if(this.mSuit.toString().equals(other.getSuit().toString())){
 			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Card other = (Card) obj;
-		if (mSuit != other.mSuit)
-			return false;
-		if (mValue != other.mValue)
-			return false;
-		return true;
+		}
+		if(this.mValue.toString().equals(other.getValue().toString())){
+			return true;
+		}
+		//If neither of these then return false 
+		return false;
 	}
 	
 	
