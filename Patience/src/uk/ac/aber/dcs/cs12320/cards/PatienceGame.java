@@ -3,10 +3,13 @@ package uk.ac.aber.dcs.cs12320.cards;
 
 import java.awt.Dimension;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
@@ -50,8 +53,7 @@ public class PatienceGame {
 		readHighScores();
 		
 		//Printing menu once initially 
-		printMenu();
-		
+		printMenu();	
 		
 		
 		//Drop into the game loop 
@@ -200,8 +202,10 @@ public class PatienceGame {
 			BufferedReader br = new BufferedReader(fr);
 			Scanner infile = new Scanner(br)){
 			
+			int numScores = Integer.parseInt(infile.nextLine());
+			
 			//loop three times for top three players 
-			for(int i = 0; i < 3; i++ ){
+			for(int i = 0; i < numScores; i++ ){
 				
 				String name = infile.nextLine();
 				int score = Integer.parseInt(infile.nextLine());
@@ -227,6 +231,37 @@ public class PatienceGame {
 	 */
 	public static void sortScores(){
 		Collections.sort(mLowScores);
+	}
+	
+	/**
+	 * Called to write lowest scores back to the txt file
+	 */
+	public static void save(){
+		
+		if(mDeck.getNumCardsDrawn() == 52){
+			int pilesLeft = mDeck.getNumCardsInPlay();
+			String name = mWindow.getDialogBoxInput("Add Lowest Score", "Please enter your name for the lowest score"); 
+			
+			//if the player takes the time to enter in a name
+			if(name != null){
+				mLowScores.add(new PlayerScore(name, pilesLeft));
+			}
+		
+			}
+		try(FileWriter fw = new FileWriter("scores.txt");
+				BufferedWriter bw = new BufferedWriter(fw);
+				PrintWriter outfile = new PrintWriter(bw);){
+				
+				outfile.println(mLowScores.size());
+			
+				for(int i = 0; i < mLowScores.size(); i++){
+					outfile.println(mLowScores.get(i).getmPlayerName());
+					outfile.println(mLowScores.get(i).getmNumPilesAtEnd());
+				}
+
+			} catch (IOException e) {
+				System.err.println("Problem when trying to write to file: scores.txt");
+			}
 	}
 	
 	

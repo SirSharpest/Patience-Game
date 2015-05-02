@@ -153,9 +153,20 @@ public class Window extends JFrame{
 	 * @param infoMessage
 	 * @param titleBar
 	 */
-    public void infoBox(String infoMessage, String titleBar)
-    {
+    public void infoBox(String infoMessage, String titleBar){
         JOptionPane.showMessageDialog(null, infoMessage, titleBar, JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    /**
+     * Requests a dialog box which asks the user for input
+     * @param titleBar
+     * @param infoMessage
+     * @return
+     */
+    public String getDialogBoxInput(String titleBar, String infoMessage){
+    	String s = (String)JOptionPane.showInputDialog(null, infoMessage, titleBar);
+ 
+    	return s;
     }
 	
 	
