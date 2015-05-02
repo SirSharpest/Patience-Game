@@ -1,7 +1,16 @@
 package uk.ac.aber.dcs.cs12320.cards;
 
+
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Scanner;
+
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
@@ -12,6 +21,8 @@ public class PatienceGame {
 	private static Window mWindow; 
 	
 	private static Deck mDeck; 
+	
+	private static ArrayList<PlayerScore> mLowScores; 
 	
 	
 	/**
@@ -33,6 +44,10 @@ public class PatienceGame {
 		PrintStream printStream = new PrintStream(mWindow.getTextAreaStream());
 		System.setErr(printStream);
 		System.setOut(printStream);
+		
+		//load scores
+		mLowScores = new ArrayList<PlayerScore>();
+		readHighScores();
 		
 		//Printing menu once initially 
 		printMenu();
@@ -105,10 +120,10 @@ public class PatienceGame {
 	public static void shuffleDeck(){
 		if(mDeck.getNumCardsDrawn() <= 0 && !mDeck.getShuffleStatus()){
 			mDeck.shuffleDeck();
-			System.out.println("Deck has been shuffled");
+			mWindow.infoBox("Deck has been shuffled", "Success");
 		}
 		else{
-			System.out.println("Sorry cannot shuffle at this time");
+			mWindow.infoBox("Sorry cannot shuffle at this time", "Error");
 		}
 		
 		
@@ -140,6 +155,20 @@ public class PatienceGame {
 		mWindow.infoBox(mDeck.listDeck(), "Pack contents!");
 	}
 	
+	public static void printScores(){
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for (int i = 0; i < mLowScores.size(); i++) {
+			sb.append(i+1);
+			sb.append(". ");
+			sb.append(mLowScores.get(i).toString());
+			sb.append("\n");
+		}
+		
+		mWindow.infoBox(sb.toString(), "Lowest Scores");
+	}
+	
 	/**
 	 * Moves the rightmost card onto the previous one
 	 */
@@ -160,6 +189,47 @@ public class PatienceGame {
 	public static void amalgamate(){
 		mDeck.amalgamate();
 	}
+	
+	/**
+	 * This reads in from a text file all of the previous high scores
+	 */
+	public static void readHighScores(){
+		
+		// Using try-with-resource (see my slides from session 15)
+		try(FileReader fr = new FileReader("scores.txt");
+			BufferedReader br = new BufferedReader(fr);
+			Scanner infile = new Scanner(br)){
+			
+			//loop three times for top three players 
+			for(int i = 0; i < 3; i++ ){
+				
+				String name = infile.nextLine();
+				int score = Integer.parseInt(infile.nextLine());
+				
+				mLowScores.add(new PlayerScore(name, score));
+				
+			}
+				}
+
+			 catch (FileNotFoundException e) {
+			System.err.println("The file: " + " does not exist. Assuming first use and an empty file." +
+		                       " If this is not the first use then have you accidentally deleted the file?");
+		} catch (IOException e) {
+			System.err.println("An unexpected error occurred when trying to open the file " + "scores.txt");
+			System.err.println(e.getMessage());
+		}
+		
+		sortScores();
+	}
+	
+	/**
+	 * sorts the highscores of the game
+	 */
+	public static void sortScores(){
+		Collections.sort(mLowScores);
+	}
+	
+	
 
 }
 

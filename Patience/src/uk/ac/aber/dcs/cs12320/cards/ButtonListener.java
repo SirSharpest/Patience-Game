@@ -71,7 +71,7 @@ public class ButtonListener implements ActionListener{
 		
 		//button 9 handle 
 		if(e.getSource() == buttons.get(8)){
-			System.out.println("9");
+			PatienceGame.printScores();
 		}
 		
 		//button 10 handle 
