@@ -41,8 +41,7 @@ public class PatienceGame {
 		
 		//Drop into the game loop 
 		while(mGameIsRunning){
-			
-
+		
 			
 			//Consume less CPU by sleeping a slight amount 
 			//Hopefully will not affect player, unless they 
@@ -53,7 +52,6 @@ public class PatienceGame {
 				
 				e.printStackTrace();
 			}
-			
 			
 			//display & render the game to the screen
 			renderWindow();
@@ -85,21 +83,13 @@ public class PatienceGame {
 		System.out.println("11. Quit");
 	}
 	
-	/**
-	 * Game logic will be handled here 
-	 * based on what is received through the @handleInput() 
-	 */
-//	private static void updateCards(){
-//		
-//	}
+
 	
 	/**
 	 * Everything here will be drawn to the screen 
 	 */
 	private static void renderWindow(){
 		
-		//update what to draw
-		//updateCards();
 		//Draw to the window
 		mWindow.cardDisplay(mDeck.printActiveCards());
 		

@@ -112,6 +112,11 @@ public class Deck {
 	 */
 	public boolean replaceCard(int oldIndex, int newIndex){
 		
+		//Cannot perform if out of bounds
+		if(oldIndex < 1 || newIndex < 0){
+			return false; 
+		}
+		
 		//if they are the same suit or the same value
 		if(mFaceupCards.get(oldIndex).equals(mFaceupCards.get(newIndex))){
 			Collections.swap(mFaceupCards, oldIndex, newIndex);
