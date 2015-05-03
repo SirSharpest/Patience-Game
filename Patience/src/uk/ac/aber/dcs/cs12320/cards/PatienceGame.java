@@ -14,10 +14,13 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+
+
 import uk.ac.aber.dcs.cs12320.cards.gui.Window;
 
 public class PatienceGame {
 	
+
 	
 	private static boolean mGameIsRunning; 
 	
@@ -53,9 +56,13 @@ public class PatienceGame {
 		//Printing menu once initially 
 		printMenu();	
 			
+		
+		
 		//Drop into the game loop 
 		while(mGameIsRunning){
 		
+			
+			
 			//Consume less CPU by sleeping a slight amount 
 			//Hopefully will not affect player, unless they 
 			//have computer cat like reflexes

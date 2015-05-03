@@ -68,8 +68,14 @@ public class Deck {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < mCards.size(); i++) {
-			sb.append(mCards.get(i).getImageName());
-			sb.append(" ");
+			sb.append(mCards.get(i).toString());
+			if(i!=mCards.size()-1){
+				sb.append(", ");
+			}
+			
+			if(i%2==1){
+				sb.append("\n");
+			}
 		}
 		
 		return sb.toString();
@@ -86,8 +92,14 @@ public class Deck {
 		StringBuilder sb = new StringBuilder();
 		
 		for (int i = 0; i < mFaceupCards.size(); i++) {
-			sb.append(mFaceupCards.get(i).getImageName());
-			sb.append(" ");
+			sb.append(mFaceupCards.get(i).toString());
+			if(i!=mFaceupCards.size()-1){
+				sb.append(", ");
+			}
+			
+			if(i%2==1){
+				sb.append("\n");
+			}
 		}
 		
 		return sb.toString();
