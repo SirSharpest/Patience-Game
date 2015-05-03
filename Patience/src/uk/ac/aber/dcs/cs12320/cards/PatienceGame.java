@@ -309,6 +309,8 @@ public class PatienceGame {
 			}
 			else{
 				mWindow.infoBox("No suitable moves", "Game over it seems");
+				break;
+				
 			}
 		}
 		
