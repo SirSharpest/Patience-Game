@@ -6,7 +6,7 @@ import java.util.Collections;
 
 public class Deck {
 	
-	private ArrayList<Card> mCards; 
+	private ArrayList<FaceDownCard> mCards; 
 	private ArrayList<FaceUpCard> mFaceupCards;
 	private int mNumCardsInPlay; 
 	private int mNumCardsDrawn; 
@@ -25,7 +25,7 @@ public class Deck {
 	public Deck(){
 		
 		//Initialise the deck 
-		mCards = new ArrayList<Card>();
+		mCards = new ArrayList<FaceDownCard>();
 		mFaceupCards = new ArrayList<FaceUpCard>();
 		
 		//used to count the turns so that no more than 52 cards are drawn in a game 
